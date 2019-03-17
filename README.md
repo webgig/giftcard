@@ -7,7 +7,7 @@ In the project directory, you can run:
 
 ## Database Configuration
 
-Create a mysql database  and update the config in ./prezzee/settings.py if required
+Create a mysql database named 'wallet' and update the config in ./prezzee/settings.py if required.
 
 ## Running the app locally
 

@@ -1,0 +1,38 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$i9vYy0zK8Z95$TxwwbmwHtClYSC1t0kCnsTBTo62eCNYkb88KgZ5VNxA=",
+        "last_login": "2019-03-12T11:54:35.166Z",
+        "is_superuser": true,
+        "username": "prezzee",
+        "first_name": "Test",
+        "last_name": "User",
+        "email": "prezzee@mailinator.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-03-11T04:56:11.011Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$i9vYy0zK8Z95$TxwwbmwHtClYSC1t0kCnsTBTo62eCNYkb88KgZ5VNxA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "testfirstname",
+        "last_name": "testlastname",
+        "email": "test@email.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-03-17T01:37:21.808Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

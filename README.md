@@ -1,7 +1,7 @@
 
 # Gift Card Application
 
-The application is a SPA. Frontend is done using React
+This is a React based SPA.
 
 In the project directory, you can run:
 

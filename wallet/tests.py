@@ -9,9 +9,8 @@ import json
 
 
 class ViewTestCase(APITestCase):
-    
+    fixtures =['wallet/fixtures/users.json','wallet/fixtures/wallets.json','cards/fixtures/cards.json']
     def setUp(self):
-        self.client.post("/api/user/register/", {'username':"test", 'password':'test123', 'email':"test@test.com"},format="json" )
         response = self.client.post("/api/auth/", {'username':"test", 'password':'test123'},format="json" )
         self.token = response.data['token']
         self.user_id = response.data['user_id']
@@ -38,8 +37,6 @@ class ViewTestCase(APITestCase):
     
     #Test get my cards
     def test_get_my_cards(self):
-        wallet = self.client.get("/api/me/wallets/",format="json" )
-        self.client.post("/api/cards/", {'title':"Test Card",'description':'test', 'value':100, 'voucher':1233,'pin':123,'wallet_id':wallet.data[0]['id']},format="json" )
         cards = self.client.get("/api/me/cards/",format="json" )
         self.assertEqual(cards.status_code, status.HTTP_200_OK)
         self.assertTrue(len(cards.data)>0)

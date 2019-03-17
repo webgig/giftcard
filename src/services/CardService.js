@@ -1,5 +1,6 @@
 import {apiUrl,authHeader,handleResponse} from "../helpers/ApiHelper"
 
+// Retrieves current user's card
 const getMyCards = async() => {
 
     let user = JSON.parse(localStorage.getItem('user'));
@@ -13,6 +14,7 @@ const getMyCards = async() => {
     }
 }
 
+// Archives/Unarchives card
 const archive = async(card_id,archive) =>{
 
     if (card_id){

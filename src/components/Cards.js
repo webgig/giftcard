@@ -42,10 +42,14 @@ class Cards extends Component {
 
     
         return (
-            <div className="container">
-                <button type="button" className="btn btn-primary my-2" data-toggle="button" aria-pressed="false" onClick={this.showArchived.bind(this)}> View Archived Cards</button>
-                
+            <div className="container"> 
+                {!this.state.archived &&
+                    <button type="button" className="btn btn-primary my-2" data-toggle="button" aria-pressed="false" onClick={this.showArchived.bind(this)}> View Archived Cards</button>
+                }
 
+                {cardsNew.length==0 &&
+                    <p>You don't have any {this.state.archived?"archived":""} cards in your wallet</p>
+                }
                 {cardsNew.length > 0 &&
                     <div className="row">
                             {cardsNew.map((card, index) =>
@@ -76,10 +80,10 @@ class Cards extends Component {
                                     </div>
                                 </div>
                                 )}
-                    </div>
+                        </div>
                 }
-            </div>
-        );
+                </div>
+         );
     }
 }
 

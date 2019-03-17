@@ -16,10 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include,path
 from django.views.generic.base  import TemplateView
+from rest_framework import routers
+from wallet import views
+from cards import views as cardviews
+from django.contrib.auth import views as auth_views
+
+router = routers.SimpleRouter()
+router.register(r'user', views.RegisterViewSet,'user')
+router.register(r'me', views.UserProfileViewSet,'me')
+router.register(r'cards', cardviews.CardViewSet,'cards')
 
 urlpatterns = [
-    #path('wallet/', include('wallet.urls')),
-    path('wallet/', include('django.contrib.auth.urls')), # new
-    path('', TemplateView.as_view(template_name='home.html'), name='home'), # new
-    path('admin/', admin.site.urls),
+    path('', auth_views.LoginView.as_view(template_name='index.html'),name='home'),
+    path('login/', TemplateView.as_view(template_name='index.html'),name='login'),
+    path('api/', include(router.urls)),
+    path('api/auth/', views.AuthenticateUser.as_view()),
+    path('admin/', admin.site.urls)
 ]

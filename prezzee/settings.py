@@ -36,10 +36,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wallet'
+    'corsheaders',            # add this
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework.decorators',
+    'knox',
+    'wallet',
+    'cards'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',    # add this
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,7 +61,7 @@ ROOT_URLCONF = 'prezzee.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +73,12 @@ TEMPLATES = [
         },
     },
 ]
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "build/static")
+]
+
 
 WSGI_APPLICATION = 'prezzee.wsgi.application'
 
@@ -122,5 +135,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+LOGIN_URL = 'login'
+
+CORS_ORIGIN_WHITELIST = (
+         'localhost:3000/'
+     )
+# Rest framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', )
+}

@@ -5,7 +5,11 @@ The application is a SPA. Frontend is done using React
 
 In the project directory, you can run:
 
-## `Running the app locally`
+## Database Configuration
+
+Create a mysql database  and update the config in ./prezzee/settings.py if required
+
+## Running the app locally
 
 ```
 python manage.py runserver
@@ -16,7 +20,7 @@ This should run the whole application including the frontend which is embeded in
 Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 
 
-## `Load Initial Data`
+## Load Initial Data
 
 Users -> wallet/fixtures/users.json
 Wallets -> wallet/fixtures/wallets.json
@@ -31,7 +35,7 @@ python manage.py loaddata wallets
 python manage.py loaddata cards
 ```
 
-## `Testing`
+## Testing
 
 ```
 python manage.py test
